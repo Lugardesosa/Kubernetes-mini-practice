@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+ name: redis-service
+ labels:
+  name: redis-service
+  app: web-app
+spec:
+ ports: 
+ - port: 6380
+   targetPort: 6380
+ selector:
+  name: redis
+  app: web-app    

@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: voting-app-deployment
+  labels:
+   name: voting-app-deployment
+   app: web-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+     name: voting-app
+     app: web-app
+  template:
+    metadata:
+     name: voting-app
+     labels:
+       name: voting-app
+       app: web-app
+    spec:
+     containers:
+      - name: voting-app
+        image: lugardesosa/vote:latest
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 80
+      

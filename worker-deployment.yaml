@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment 
+metadata:
+ name: worker-app-deployment
+ labels:
+  name: worker-app-deployment
+  app: web-app
+spec:
+ replicas: 2
+ selector:
+  matchLabels:
+   name: worker-app-node
+   app: web-app
+ template:
+  metadata:
+   name: worker-app-node
+   app: web-app
+  spec: 
+   containers:
+    - name: result-app
+      image: lugardesosa/worker:latest
+      resources:
+       limits:
+        memory: "120Mbi"
+        cpu: "500m"
+      
+          
+    

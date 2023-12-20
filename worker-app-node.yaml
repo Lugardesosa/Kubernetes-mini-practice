@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: worker-app-node
+  labels:
+    name: worker-app-node
+    app: web-app
+spec:
+  containers:
+  - name: result-app
+    image: lugardesosa/worker:latest
+    resources:
+      limits:
+        memory: "120Mbi"
+        cpu: "500m"
